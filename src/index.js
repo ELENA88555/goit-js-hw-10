@@ -16,8 +16,7 @@ input.addEventListener('input', debounce(handleInputSearch, DEBOUNCE_DELAY))
 function handleInputSearch(){
 let name = input.value.trim();
 if(name === ""){
-  countryInfo.innerHTML = ""
-  countryList.innerHTML = ""
+  clearPage()
   return
 }
 
@@ -25,8 +24,7 @@ fetchCountries(name)
 .then((countries) => {
 if (countries.length > 10){
   Notify.info("Too many matches found. Please enter a more specific name.")
-  countryInfo.innerHTML = "";
-  countryList.innerHTML = "";
+clearPage()
   return
  }   
 
@@ -49,11 +47,10 @@ countryList.innerHTML = "";
 
 }
 
-
-
-
-
-
+function clearPage () {
+  countryInfo.innerHTML = ""
+  countryList.innerHTML = ""
+}
 
 
 
